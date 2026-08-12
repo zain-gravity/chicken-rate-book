@@ -30,7 +30,9 @@ export default async function PreviewPage({ params }) {
   const serializedRateList = {
     date: rateList.date,
     items: rateList.items.map(i => ({ name: i.name, price: i.price, unit: i.unit })),
+    note: rateList.note,
     shopName: user.shopName,
+    shopAddress: user.shopAddress,
     logoBase64: user.logoBase64,
   };
 

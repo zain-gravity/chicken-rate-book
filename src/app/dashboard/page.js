@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Plus, Calendar, ChevronRight, LogOut } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 import LogoUpload from "./LogoUpload";
+import AddressUpdate from "./AddressUpdate";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -35,6 +36,7 @@ export default async function Dashboard() {
       </div>
 
       <LogoUpload initialLogo={user?.logoBase64 || null} />
+      <AddressUpdate initialAddress={user?.shopAddress || ""} />
 
       <Link href="/editor" style={{ textDecoration: 'none', marginBottom: '32px', display: 'block' }}>
         <div className="card glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', padding: '20px', cursor: 'pointer', backgroundColor: 'var(--primary)', color: 'white', border: 'none' }}>

@@ -138,7 +138,12 @@ export default function PreviewActions({ rateList }) {
             <h2 style={{ fontSize: '32px', fontWeight: '800', color: 'var(--text-main)', marginBottom: '8px', letterSpacing: '-1px' }}>
               {rateList.shopName}
             </h2>
-            <div style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: 'white', padding: '6px 16px', borderRadius: '100px', fontSize: '14px', fontWeight: '600' }}>
+            {rateList.shopAddress && (
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '12px' }}>
+                {rateList.shopAddress}
+              </p>
+            )}
+            <div style={{ display: 'inline-block', backgroundColor: 'var(--primary)', color: 'white', padding: '6px 16px', borderRadius: '20px', fontSize: '14px', fontWeight: '600' }}>
               {formattedDate}
             </div>
           </div>
@@ -160,6 +165,14 @@ export default function PreviewActions({ rateList }) {
               </div>
             ))}
           </div>
+
+          {rateList.note && (
+            <div style={{ marginTop: '32px', padding: '16px', backgroundColor: 'rgba(37, 99, 235, 0.05)', borderRadius: '12px', borderLeft: '4px solid var(--primary)' }}>
+              <p style={{ fontSize: '14px', color: 'var(--text-main)', fontStyle: 'italic', margin: 0 }}>
+                {rateList.note}
+              </p>
+            </div>
+          )}
 
           <div style={{ marginTop: '32px', textAlign: 'center', fontSize: '14px', color: 'var(--text-muted)', fontStyle: 'italic', position: 'relative' }}>
             Thank you for your business!

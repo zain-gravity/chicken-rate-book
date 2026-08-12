@@ -25,6 +25,8 @@ export default function EditorForm({ lastRateList }) {
   const initialItems = lastRateList ? lastRateList.items : DEFAULT_ITEMS;
   const [items, setItems] = useState(initialItems);
   
+  const [note, setNote] = useState(lastRateList?.note || "");
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -68,7 +70,7 @@ export default function EditorForm({ lastRateList }) {
       return;
     }
 
-    const res = await saveRateList({ date, items });
+    const res = await saveRateList({ date, items, note });
     
     if (res.error) {
       setError(res.error);
@@ -174,6 +176,20 @@ export default function EditorForm({ lastRateList }) {
             </button>
           </div>
         ))}
+      </div>
+
+      <div className="card glass-panel animate-fade-in" style={{ animationDelay: '0.25s', marginBottom: '24px' }}>
+        <div className="input-group" style={{ marginBottom: 0 }}>
+          <label className="input-label" htmlFor="note">Footer Note (Optional)</label>
+          <input 
+            type="text" 
+            id="note" 
+            className="input-field" 
+            value={note} 
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="e.g., Until stock lasts, Valid today only..."
+          />
+        </div>
       </div>
 
       <div style={{ display: 'flex', gap: '12px', marginBottom: '40px', animationDelay: '0.3s' }} className="animate-fade-in">

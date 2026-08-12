@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  shopAddress: {
+    type: String,
+    default: "",
+  },
 }, { timestamps: true });
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);

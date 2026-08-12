@@ -37,7 +37,7 @@ export async function registerUser(formData) {
   }
 }
 
-export async function saveRateList(data) {
+export async function saveRateList({ date, items, note }) {
   try {
     await dbConnect();
     
@@ -50,7 +50,6 @@ export async function saveRateList(data) {
       return { error: "Unauthorized" };
     }
 
-    const { date, items } = data;
     if (!date || !items || items.length === 0) {
       return { error: "Date and items are required" };
     }
@@ -58,7 +57,7 @@ export async function saveRateList(data) {
     // Upsert the rate list for this date
     const rateList = await RateList.findOneAndUpdate(
       { userId: session.user.id, date },
-      { items },
+      { items, note: note || "" },
       { new: true, upsert: true }
     );
 
@@ -88,5 +87,27 @@ export async function updateShopLogo(base64String) {
   } catch (error) {
     console.error(error);
     return { error: error.message || "Failed to update logo" };
+  }
+}
+
+export async function updateShopAddress(address) {
+  try {
+    await dbConnect();
+    
+    // Validate session
+    const { getServerSession } = await import("next-auth");
+    const { authOptions } = await import("./api/auth/[...nextauth]/route");
+    const session = await getServerSession(authOptions);
+    
+    if (!session) {
+      return { error: "Unauthorized" };
+    }
+
+    await User.findByIdAndUpdate(session.user.id, { shopAddress: address });
+
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { error: error.message || "Failed to update address" };
   }
 }

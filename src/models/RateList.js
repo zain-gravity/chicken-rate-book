@@ -26,7 +26,11 @@ const RateListSchema = new mongoose.Schema({
         default: 'kg',
       },
     }
-  ]
+  ],
+  note: {
+    type: String,
+    default: "",
+  },
 }, { timestamps: true });
 
 // Ensure a user can only have one rate list per date
