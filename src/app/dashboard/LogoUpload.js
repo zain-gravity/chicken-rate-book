@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "next";
+import { useState } from "react";
 import { updateShopLogo } from "../actions";
 import { Upload, Image as ImageIcon } from "lucide-react";
 

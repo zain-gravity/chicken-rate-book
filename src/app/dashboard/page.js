@@ -34,7 +34,7 @@ export default async function Dashboard() {
         <LogoutButton />
       </div>
 
-      <LogoUpload initialLogo={user.logoBase64} />
+      <LogoUpload initialLogo={user?.logoBase64 || null} />
 
       <Link href="/editor" style={{ textDecoration: 'none', marginBottom: '32px', display: 'block' }}>
         <div className="card glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', padding: '20px', cursor: 'pointer', backgroundColor: 'var(--primary)', color: 'white', border: 'none' }}>
