@@ -8,7 +8,7 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Chicken Rate Book",
+  title: "Rate Book by Mirza",
   description: "A simple, beautiful mobile web app for chicken shop owners",
 };
 

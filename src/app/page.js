@@ -62,8 +62,8 @@ export default function Home() {
         <div style={{ display: 'inline-flex', padding: '16px', backgroundColor: 'var(--primary)', borderRadius: 'var(--radius-lg)', marginBottom: '16px', color: 'white', boxShadow: '0 10px 25px -5px rgba(37, 99, 235, 0.4)' }}>
           <FileText size={48} />
         </div>
-        <h1 className="title" style={{ fontSize: '36px', marginBottom: '8px' }}>Chicken Rate Book</h1>
-        <p className="subtitle">Manage and share your daily prices with ease.</p>
+        <h1 className="title" style={{ fontSize: '36px', marginBottom: '4px', letterSpacing: '-1px' }}>Rate Book</h1>
+        <p style={{ fontSize: '15px', fontWeight: '500', color: 'var(--primary)', opacity: 0.9, letterSpacing: '0.5px', textTransform: 'uppercase' }}>by Mirza</p>
       </div>
 
       <div className="card glass-panel animate-fade-in" style={{ animationDelay: '0.1s' }}>
