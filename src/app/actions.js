@@ -68,3 +68,25 @@ export async function saveRateList(data) {
     return { error: error.message || "Failed to save rate list" };
   }
 }
+
+export async function updateShopLogo(base64String) {
+  try {
+    await dbConnect();
+    
+    // Validate session
+    const { getServerSession } = await import("next-auth");
+    const { authOptions } = await import("./api/auth/[...nextauth]/route");
+    const session = await getServerSession(authOptions);
+    
+    if (!session) {
+      return { error: "Unauthorized" };
+    }
+
+    await User.findByIdAndUpdate(session.user.id, { logoBase64: base64String });
+
+    return { success: true };
+  } catch (error) {
+    console.error(error);
+    return { error: error.message || "Failed to update logo" };
+  }
+}

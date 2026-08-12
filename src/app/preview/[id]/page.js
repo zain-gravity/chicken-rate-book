@@ -31,6 +31,7 @@ export default async function PreviewPage({ params }) {
     date: rateList.date,
     items: rateList.items.map(i => ({ name: i.name, price: i.price, unit: i.unit })),
     shopName: user.shopName,
+    logoBase64: user.logoBase64,
   };
 
   return (

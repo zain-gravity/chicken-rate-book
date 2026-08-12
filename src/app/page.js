@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <div className="container" style={{ justifyContent: 'center' }}>
       <div className="animate-fade-in" style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <div style={{ display: 'inline-flex', padding: '16px', backgroundColor: 'var(--primary)', borderRadius: 'var(--radius-lg)', marginBottom: '16px', color: 'white', boxShadow: '0 10px 25px -5px rgba(249, 115, 22, 0.4)' }}>
+        <div style={{ display: 'inline-flex', padding: '16px', backgroundColor: 'var(--primary)', borderRadius: 'var(--radius-lg)', marginBottom: '16px', color: 'white', boxShadow: '0 10px 25px -5px rgba(37, 99, 235, 0.4)' }}>
           <FileText size={48} />
         </div>
         <h1 className="title" style={{ fontSize: '36px', marginBottom: '8px' }}>Chicken Rate Book</h1>

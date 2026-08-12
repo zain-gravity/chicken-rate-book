@@ -99,7 +99,7 @@ export default function EditorForm({ lastRateList }) {
         </div>
         
         {lastRateList && (
-          <div style={{ padding: '12px', backgroundColor: 'rgba(249, 115, 22, 0.1)', color: 'var(--primary-dark)', borderRadius: 'var(--radius-sm)', fontSize: '14px', marginBottom: '16px' }}>
+          <div style={{ padding: '12px', backgroundColor: 'rgba(37, 99, 235, 0.1)', color: 'var(--primary-dark)', borderRadius: 'var(--radius-sm)', fontSize: '14px', marginBottom: '16px' }}>
             Loaded previous rates from {new Date(lastRateList.date).toLocaleDateString()}. Make your changes below.
           </div>
         )}

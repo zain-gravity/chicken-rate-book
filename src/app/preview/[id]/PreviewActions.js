@@ -118,7 +118,7 @@ export default function PreviewActions({ rateList }) {
             border: '2px solid var(--primary)',
             borderRadius: '24px', 
             padding: '32px 24px', 
-            boxShadow: '0 20px 25px -5px rgba(249, 115, 22, 0.1)',
+            boxShadow: '0 20px 25px -5px rgba(37, 99, 235, 0.1)',
             position: 'relative',
             overflow: 'hidden'
           }}
@@ -128,6 +128,13 @@ export default function PreviewActions({ rateList }) {
           <div style={{ position: 'absolute', bottom: '-20px', left: '-20px', width: '100px', height: '100px', borderRadius: '50%', background: 'var(--primary)', opacity: 0.1 }} />
 
           <div style={{ textAlign: 'center', marginBottom: '32px', position: 'relative' }}>
+            {rateList.logoBase64 && (
+              <img 
+                src={rateList.logoBase64} 
+                alt="Logo" 
+                style={{ width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', marginBottom: '16px', border: '3px solid var(--primary)', padding: '2px', backgroundColor: 'white' }} 
+              />
+            )}
             <h2 style={{ fontSize: '32px', fontWeight: '800', color: 'var(--text-main)', marginBottom: '8px', letterSpacing: '-1px' }}>
               {rateList.shopName}
             </h2>
@@ -138,7 +145,7 @@ export default function PreviewActions({ rateList }) {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative' }}>
             {rateList.items.map((item, index) => (
-              <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed #fdba74', paddingBottom: '12px' }}>
+              <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px dashed #93c5fd', paddingBottom: '12px' }}>
                 <div style={{ fontSize: '18px', fontWeight: '600', color: '#334155' }}>
                   {item.name}
                 </div>

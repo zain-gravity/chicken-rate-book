@@ -2,10 +2,12 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import dbConnect from "@/lib/mongodb";
+import User from "@/models/User";
 import RateList from "@/models/RateList";
 import Link from "next/link";
 import { Plus, Calendar, ChevronRight, LogOut } from "lucide-react";
 import LogoutButton from "./LogoutButton";
+import LogoUpload from "./LogoUpload";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
@@ -15,6 +17,9 @@ export default async function Dashboard() {
   }
 
   await dbConnect();
+  
+  // Fetch user to get logo
+  const user = await User.findById(session.user.id).lean();
   
   // Fetch rate lists sorted by date descending
   const rateLists = await RateList.find({ userId: session.user.id }).sort({ date: -1 }).lean();
@@ -28,6 +33,8 @@ export default async function Dashboard() {
         </div>
         <LogoutButton />
       </div>
+
+      <LogoUpload initialLogo={user.logoBase64} />
 
       <Link href="/editor" style={{ textDecoration: 'none', marginBottom: '32px', display: 'block' }}>
         <div className="card glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', padding: '20px', cursor: 'pointer', backgroundColor: 'var(--primary)', color: 'white', border: 'none' }}>
@@ -55,7 +62,7 @@ export default async function Dashboard() {
                 <Link key={list._id.toString()} href={`/preview/${list._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div className="card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px', cursor: 'pointer', transition: 'transform 0.2s', ':hover': { transform: 'translateX(4px)' } }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: 'var(--radius-sm)', backgroundColor: 'rgba(249, 115, 22, 0.1)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: 'var(--radius-sm)', backgroundColor: 'rgba(37, 99, 235, 0.1)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Calendar size={24} />
                       </div>
                       <div>

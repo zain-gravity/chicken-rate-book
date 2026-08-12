@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please provide a shop name'],
   },
+  logoBase64: {
+    type: String,
+    default: null,
+  },
 }, { timestamps: true });
 
 export default mongoose.models.User || mongoose.model('User', UserSchema);
