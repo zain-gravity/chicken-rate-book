@@ -41,6 +41,12 @@ export default function EditorForm({ lastRateList }) {
     setItems(newItems);
   };
 
+  const handleUnitChange = (index, value) => {
+    const newItems = [...items];
+    newItems[index].unit = value;
+    setItems(newItems);
+  };
+
   const handleRemoveItem = (index) => {
     const newItems = [...items];
     newItems.splice(index, 1);
@@ -121,8 +127,30 @@ export default function EditorForm({ lastRateList }) {
                 onChange={(e) => handleItemNameChange(index, e.target.value)}
                 style={{ border: 'none', background: 'transparent', fontSize: '16px', fontWeight: '500', color: 'var(--text-main)', width: '100%', outline: 'none' }}
               />
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '14px' }}>
-                per {item.unit}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--text-muted)', fontSize: '14px' }}>
+                per 
+                <select 
+                  value={item.unit || "kg"} 
+                  onChange={(e) => handleUnitChange(index, e.target.value)}
+                  style={{ 
+                    border: 'none', 
+                    background: 'transparent', 
+                    color: 'var(--primary)', 
+                    fontSize: '14px', 
+                    fontWeight: '600', 
+                    outline: 'none', 
+                    cursor: 'pointer',
+                    padding: '0'
+                  }}
+                >
+                  <option value="kg">kg</option>
+                  <option value="piece">piece</option>
+                  <option value="250g">250g</option>
+                  <option value="500g">500g</option>
+                  <option value="gms">gms</option>
+                  <option value="dozen">dozen</option>
+                  <option value="pack">pack</option>
+                </select>
               </div>
             </div>
             
